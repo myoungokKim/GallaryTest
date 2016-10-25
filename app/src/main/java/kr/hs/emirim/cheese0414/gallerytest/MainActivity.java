@@ -3,6 +3,7 @@ package kr.hs.emirim.cheese0414.gallerytest;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -46,7 +47,15 @@ public class MainActivity extends AppCompatActivity {
             imgV.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imgV.setPadding(-1, -1, -1, -1);
             imgV.setImageResource(posterIDs[position]);
-
+            final int pos=position;
+            imgV.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    imgMain.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                    imgMain.setImageResource(posterIDs[pos]);
+                    return false;
+                }
+            });
             return imgV;
         }
 
